@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP Integrador Front</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <a href="index.html">
+                    <li>ver</li>
+                </a>
+                <a href="consultar.html">
+                    <li>consultar id</li>
+                </a>
+                <a href="crear.html">
+                    <li>crear</li>
+                </a>
+                <a href="modificar.html">
+                    <li>modificar</li>
+                </a>
+                <a href="eliminar.html">
+                    <li>eliminar</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>listado productos</h1>
+        <hr>
+        <section id="contenedor-productos"></section>
+    </main>
+    <script>
+        let contenedorProductos = document.getElementById("contenedor-productos");
+        let url = "http://localhost:3000";
+
+
+        async function obtenerProductos() {
+            try{
+                let response = await fetch(`${url}/api/products/`);
+                let  data = await response.json();
+                let productos = data.payload;
+                console.table(productos);
+
+                mostrarProductos(productos);
+
+            }catch(error){
+                console.error("error obteniendo productos ", error);
+                
+            }
+        }
+
+        function mostrarProductos(Array){
+            let htmlProductos = "";
+
+            Array.forEach(prod => {
+                htmlProductos += `
+                    <div class="card-producto">
+                        <img class="producto-img" src="${prod.img_url}" alt="${prod.nombre}">
+                        <h3>${prod.nombre}</h3>
+                        <p>Id: ${prod.id}</p>
+                        <p>$${prod.precio}</p>
+                    </div>
+                `;
+                contenedorProductos.innerHTML = htmlProductos;
+            });
+        }
+
+        function init(){
+            obtenerProductos();
+        }
+
+        init();
+    </script>
+</body>
+</html>
