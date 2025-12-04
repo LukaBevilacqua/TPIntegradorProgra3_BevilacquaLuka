@@ -119,8 +119,6 @@ app.post("/login", async (req, res)=>{
         }
 
         res.redirect("/");
-
-
     }catch(error){
         console.error("erro en el login ", error);
     }
