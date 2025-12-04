@@ -16,11 +16,12 @@
             <a href="/eliminar">
                 <li>eliminar</li>
             </a>
+            <li>
+                <form action="/logout" method="post" id="logout">
+                    <input type="submit" value="Cerrar sesion">
+                </form>
+            </li>
         </ul>
     </nav>
-    <form action="/logout" method="post" id="logout">
-        <input type="submit" value="Cerrar sesion">
-    </form>
 </header>
 <h1><%= about %></h1>
-<hr>

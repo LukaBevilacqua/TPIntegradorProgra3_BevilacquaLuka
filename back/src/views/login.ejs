@@ -5,16 +5,18 @@
         <%= error %>
     </div>
 <% } %>
-<form id="login-form" action="/login" method="POST" autocomplete="off">
-    <label for="emailUser">Email</label>
-    <input type="email" name="email" id="emailUser" required>
+<div class="login-container">
+    <form id="login-form" action="/login" method="POST" autocomplete="off">
+        <label for="emailUser">Email</label>
+        <input type="email" name="email" id="emailUser" required>
 
-    <label for="passwordUser">Password</label>
-    <input type="password" name="password" id="passwordUser" required>
+        <label for="passwordUser">Password</label>
+        <input type="password" name="password" id="passwordUser" required>
 
-    <input type="submit" class="btn-login" value="Login">
-    <input type="button" id="acceso" class="btn-login" value="Acceso rápido">
-</form>
+        <input type="submit" class="btn-login" value="Login">
+        <input type="button" id="acceso" class="btn-login" value="Acceso rápido">
+    </form>
+</div>
 <script>
     let emailUser = document.getElementById("emailUser");
     let passwordUser = document.getElementById("passwordUser");
