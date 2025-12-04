@@ -23,6 +23,7 @@ altaProducts_container.addEventListener("submit", async (event) => {
             let result = await response.json();
             console.log(result.message);
             alert(result.message);
+            location.reload();
 
         };
     } catch (error) {

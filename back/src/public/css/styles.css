@@ -176,7 +176,7 @@ h1 {
 #contenedor-productos{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 #lista-productos{
@@ -319,7 +319,7 @@ h1 {
 }
 
 #altaProducts-container input[type="text"]{
-        padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
     border: 1px solid #cfd8dc;
     border-radius: 4px;
     font-size: 1rem;
@@ -330,7 +330,7 @@ h1 {
 }
 
 #altaProducts-container input[type="number"]{
-        padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
     border: 1px solid #cfd8dc;
     border-radius: 4px;
     font-size: 1rem;
@@ -367,6 +367,119 @@ h1 {
 #altaProducts-container input[type="submit"]:hover{
     background-color: #303f9f;
 }
+
+/* modificar */
+
+.li-botonera{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+#updateProduct-button{
+    list-style-type: none;
+    padding: 0.75rem 1.5rem;
+    background-color: #3949ab;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+#updateProducts-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#updateFormContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    max-width: 500px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#updateFormContainer label{
+    font-weight: 600;
+    color: #1a237e;
+    font-size: 1.1rem;
+}
+
+#updateFormContainer input[type="text"]{
+    padding: 0.5rem 1rem;
+    border: 1px solid #cfd8dc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 400px;
+    text-align: center;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+}
+
+#updateFormContainer input[type="number"]{
+    padding: 0.5rem 1rem;
+    border: 1px solid #cfd8dc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 400px;
+    text-align: center;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+}
+
+#updateFormContainer input[type="submit"]{
+    list-style-type: none;
+    padding: 0.75rem 1.5rem;
+    background-color: #3949ab;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+#updateFormContainer select{
+    padding: 0.5rem 1rem;
+    border: 1px solid #cfd8dc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 400px;
+    text-align: center;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+}
+
+/* eliminar */
+
+#deleteProduct-button{
+    list-style-type: none;
+    padding: 0.75rem 1.5rem;
+    background-color: #3949ab;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
 
 
 /* footer */

@@ -29,11 +29,11 @@ getProductForm.addEventListener("submit", async (event) => {
             <li class="li-producto">
                 <img class="producto-img" src="${producto.img_url}" alt="${producto.nombre}">
                 <p>id: ${producto.id} nombre: ${producto.nombre} <strong>precio: ${producto.precio}</strong></p>
-                </li>
-                <li class="li-botonera">
-                    <input type="button" id="updateProduct-button" value="Actualizar">
-                    </li>
-                    `;
+            </li>
+            <li class="li-botonera">
+                <input type="button" id="updateProduct-button" value="Actualizar">
+            </li>
+        `;
 
     listaProductos.innerHTML = htmlProducto;
 
@@ -60,7 +60,7 @@ async function crearFormulario(producto) {
                     </select>
                     <label for="imageProd">imagen</label>
                     <input type="text" name="imageProd" id="imageProd" value="${producto.img_url}" required>
-                    <input type="submit" value="crear producto">
+                    <input type="submit" value="Actualizar producto">
                     <input type="hidden" name="activeProd" id="activeProd" value="${producto.activo}" required>
                 </form>
             `;
@@ -70,6 +70,8 @@ async function crearFormulario(producto) {
 
     updateProducts_form.addEventListener("submit", event => {
         actualizarProducto(event);
+        alert("Producto actualizado");
+        location.reload();
     });
 }
 
