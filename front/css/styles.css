@@ -153,7 +153,7 @@ nav {
 }
 
 .cart {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 /* lista productos */
@@ -162,8 +162,35 @@ nav {
 }
 
 .products-section h2{
-    color: #1a237e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    max-width: 300px;
+    background-color: rgb(0 0 0 / 78%);
+    margin-top: 23px;
+    padding: 0px 10px;
+    border: none;
+    border-radius: 5px;
 }
+
+.div-seleccion{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+.div-seleccion label{
+    font-size: 20px;
+    color: white;
+    background-color: rgb(0 0 0 / 78%);
+    margin-top: 23px;
+    padding: 0px 10px;
+    border: none;
+    border-radius: 5px;
+}
+
 
 .product-grid {
     display: flex;
@@ -270,6 +297,7 @@ nav {
     align-items: center;
     width: 40%;
     margin: 0 auto;
+    margin-bottom: 5px;
 }
 
 .cart-total {

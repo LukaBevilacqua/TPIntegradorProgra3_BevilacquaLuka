@@ -158,6 +158,8 @@ nav li {
     flex-direction: column;
     align-items: center;
     margin: auto;
+    background-color: red;
+    color: white;
 }
 
 /* index */

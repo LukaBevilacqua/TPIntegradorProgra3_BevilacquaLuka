@@ -12,6 +12,9 @@ let precioCarrito = document.getElementById("total-price");
 let contadorCarrito = document.getElementById("cart-count");
 let boton_imprimir = document.getElementById("btn-imprimir");
 
+let checkboxGuitarra = document.getElementById("checkboxGuitarra");
+let checkboxBajo = document.getElementById("checkboxBajo");
+
 let productos = [];
 let carrito = [];
 
@@ -26,6 +29,10 @@ async function obtenerProductos() {
         console.log(data);
 
         productos = data.payload; 
+        
+        if (checkboxGuitarra) checkboxGuitarra.checked = true;
+        if (checkboxBajo) checkboxBajo.checked = true;
+        
         mostrarProductos(productos);
     } catch(error) {
         console.error(error);
@@ -41,6 +48,7 @@ function mostrarProductos(array) {
                 <img src="${array[i].img_url}" alt="${array[i].nombre}">
                 <h3>${array[i].nombre}</h3>
                 <p>$${array[i].precio}</p>
+                <p>${array[i].tipo}</p>
                 <button class="add-to-cart" onclick="agregarCarrito(${array[i].id})">Agregar a carrito</button>
             </div>
         `;
@@ -88,6 +96,53 @@ function mostrarCarrito() {
     }
 }
 
+function aplicarFiltroTipo(arrayProductos) {
+    if (!checkboxGuitarra || !checkboxBajo) {
+        return arrayProductos;
+    }
+
+    const mostrarGuitarras = checkboxGuitarra.checked;
+    const mostrarBajos = checkboxBajo.checked;
+    
+    if (!mostrarGuitarras && !mostrarBajos) {
+        return [];
+    }
+    
+    if (mostrarGuitarras && mostrarBajos) {
+        return arrayProductos;
+    }
+    
+    return arrayProductos.filter((producto) => {
+        const tipo = producto.tipo ? producto.tipo.toLowerCase() : "";
+        
+        if (mostrarGuitarras && !mostrarBajos) {
+            return tipo.includes("guitarra");
+        }
+        
+        if (mostrarBajos && !mostrarGuitarras) {
+            return tipo.includes("bajo");
+        }
+        
+        return true;
+    });
+}
+
+function aplicarTodosLosFiltros() {
+    const valorBusqueda = barraBusqueda.value;
+    let productosFiltrados = productos.filter((producto) => {
+        return producto.nombre.includes(valorBusqueda);
+    });
+
+    productosFiltrados = aplicarFiltroTipo(productosFiltrados);
+
+    mostrarProductos(productosFiltrados);
+}
+
+if (checkboxGuitarra && checkboxBajo) {
+    checkboxGuitarra.addEventListener("change", aplicarTodosLosFiltros);
+    checkboxBajo.addEventListener("change", aplicarTodosLosFiltros);
+}
+
 barraBusqueda.addEventListener("keyup", filtrarProductos);
 
 function filtrarProductos() {
@@ -95,6 +150,9 @@ function filtrarProductos() {
 	let productosFiltrados = productos.filter((producto) => {
 		return producto.nombre.includes(valorBusqueda);
 	});
+	
+	productosFiltrados = aplicarFiltroTipo(productosFiltrados);
+	
 	mostrarProductos(productosFiltrados);
 }
 

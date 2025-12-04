@@ -71,7 +71,7 @@ async function crearFormulario(producto) {
     updateProducts_form.addEventListener("submit", event => {
         actualizarProducto(event);
         alert("Producto actualizado");
-        location.reload();
+        window.location.href = "/"
     });
 }
 
