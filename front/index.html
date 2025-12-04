@@ -3,77 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP Integrador Front</title>
+    <title>Tienda de Musica</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <a href="index.html">
-                    <li>ver</li>
-                </a>
-                <a href="consultar.html">
-                    <li>consultar id</li>
-                </a>
-                <a href="crear.html">
-                    <li>crear</li>
-                </a>
-                <a href="modificar.html">
-                    <li>modificar</li>
-                </a>
-                <a href="eliminar.html">
-                    <li>eliminar</li>
-                </a>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>listado productos</h1>
-        <hr>
-        <section id="contenedor-productos"></section>
+<body class="pagina-bienvenida">
+    <!-- <header class="header-bienvenida">
+        <h2>Tienda de musica</h2>
+    </header> -->
+    <main class="main-bienvenida">
+        <form id="form-bienvenida">
+            <h1>Bienvenido!</h1>
+            <h4>Introducí tu nombre</h4>
+            <input type="text" id="bienvenida-nombre">
+            <input class="btn-enviar" type="submit" value="Enviar">
+        </form>
+
     </main>
+
     <script>
-        let contenedorProductos = document.getElementById("contenedor-productos");
-        let url = "http://localhost:3000";
+        // Formulario bienvenida
+        let formBienvenida = document.getElementById("form-bienvenida");
+        formBienvenida.addEventListener("submit", event => {
+            event.preventDefault();
 
+            let nombreUsuario = document.getElementById("bienvenida-nombre").value;
 
-        async function obtenerProductos() {
-            try{
-                let response = await fetch(`${url}/api/products/`);
-                let  data = await response.json();
-                let productos = data.payload;
-                console.table(productos);
-
-                mostrarProductos(productos);
-
-            }catch(error){
-                console.error("error obteniendo productos ", error);
-                
+            if(nombreUsuario.length > 0) {
+                sessionStorage.setItem("nombreUsuario", nombreUsuario); // Guardamos el nombre de usuario
+                window.location.href = "productos.html"; // Hacemos la redireccion
             }
-        }
-
-        function mostrarProductos(Array){
-            let htmlProductos = "";
-
-            Array.forEach(prod => {
-                htmlProductos += `
-                    <div class="card-producto">
-                        <img class="producto-img" src="${prod.img_url}" alt="${prod.nombre}">
-                        <h3>${prod.nombre}</h3>
-                        <p>Id: ${prod.id}</p>
-                        <p>$${prod.precio}</p>
-                    </div>
-                `;
-                contenedorProductos.innerHTML = htmlProductos;
-            });
-        }
-
-        function init(){
-            obtenerProductos();
-        }
-
-        init();
+        });
     </script>
 </body>
 </html>
