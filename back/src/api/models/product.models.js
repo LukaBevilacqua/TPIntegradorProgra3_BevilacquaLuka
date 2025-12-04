@@ -26,6 +26,15 @@ const updateProduct = (name, price, category, image, id)=>{
     return connection.query(sql, [name, price, category, image, id]);
 }
 
+const updateActive = (estado, id)=>{
+    let sql = `
+        UPDATE productos
+        SET activo = ?
+        WHERE id = ?
+    `;
+    return connection.query(sql, [estado, id])
+} 
+
 const deleteProduct = (id)=>{
     let sql = "DELETE FROM productos WHERE id = ?";
     return connection.query(sql, [id]);
@@ -36,7 +45,8 @@ export default{
     selectProductsWhereId,
     insertProducts,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    updateActive
 }
 
 

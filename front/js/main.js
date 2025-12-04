@@ -42,16 +42,18 @@ async function obtenerProductos() {
 function mostrarProductos(array) {
     let cartaProducto = "";
     
-    for(let i = 0; i < array.length; i++) {    
-        cartaProducto += `
-            <div class="product-card">
-                <img src="${array[i].img_url}" alt="${array[i].nombre}">
-                <h3>${array[i].nombre}</h3>
-                <p>$${array[i].precio}</p>
-                <p>${array[i].tipo}</p>
-                <button class="add-to-cart" onclick="agregarCarrito(${array[i].id})">Agregar a carrito</button>
-            </div>
-        `;
+    for(let i = 0; i < array.length; i++) {   
+        if(array[i].activo == 1){
+            cartaProducto += `
+                <div class="product-card">
+                    <img src="${array[i].img_url}" alt="${array[i].nombre}">
+                    <h3>${array[i].nombre}</h3>
+                    <p>$${array[i].precio}</p>
+                    <p>${array[i].tipo}</p>
+                    <button class="add-to-cart" onclick="agregarCarrito(${array[i].id})">Agregar a carrito</button>
+                </div>
+            `;
+        }
     }
     cuadriculaProductos.innerHTML = cartaProducto;
 }

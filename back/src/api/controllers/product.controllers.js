@@ -100,6 +100,35 @@ export const modifyProduct = async (req, res)=>{
     }
 }
 
+export const modifyActive = async (req, res)=>{
+    try{
+        let {id, active} = req.params;
+        if(!id || !active){
+            return res.status(400).json({
+                message: "Datos invalidos, asegurate de enviar todos los datos"
+            });
+        }
+
+        let [result] = await ProductsModels.updateActive(active, id);
+        if(result.affectedRows === 0){
+            return res.status(400).json({
+                message: "No se actualizo el producto"
+            });
+        }
+
+        res.status(200).json({
+            message: "Producto actualizado correctamente"
+        });
+
+    }catch(error){
+        console.error(error);
+        res.status(500).json({
+            message: "Error interno del servidor",
+            error: error.message
+        });
+    }
+}
+
 export const removeProduct = async (req, res)=>{
     try{
         let {id} = req.params;
